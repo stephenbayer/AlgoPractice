@@ -1,0 +1,31 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/stephenbayer/projects/github/stephenbayer/AlgoPractice/Libraries/DataStructures/DataStructures.csproj": {}
+  },
+  "projects": {
+    "/Users/stephenbayer/projects/github/stephenbayer/AlgoPractice/Libraries/DataStructures/DataStructures.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/stephenbayer/projects/github/stephenbayer/AlgoPractice/Libraries/DataStructures/DataStructures.csproj",
+        "projectName": "DataStructures",
+        "projectPath": "/Users/stephenbayer/projects/github/stephenbayer/AlgoPractice/Libraries/DataStructures/DataStructures.csproj",
+        "projectJsonPath": "/Users/stephenbayer/projects/github/stephenbayer/AlgoPractice/Libraries/DataStructures/project.json",
+        "packagesPath": "/Users/stephenbayer/.nuget/packages/",
+        "projectStyle": "ProjectJson",
+        "configFilePaths": [
+          "/Users/stephenbayer/.config/NuGet/NuGet.Config"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      },
+      "dependencies": {
+        "Microsoft.NETCore.Portable.Compatibility": "[1.0.1, )",
+        "NETStandard.Library": "[1.6.0, )"
+      },
+      "frameworks": {
+        "netstandard1.5": {}
+      }
+    }
+  }
+}
