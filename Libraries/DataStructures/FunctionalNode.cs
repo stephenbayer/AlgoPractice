@@ -17,10 +17,5 @@ namespace DataStructures
         {
             return new FunctionalNode<T>(_func, _func(Value));
         }
-
-        public void SetChild(INode<T> child)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

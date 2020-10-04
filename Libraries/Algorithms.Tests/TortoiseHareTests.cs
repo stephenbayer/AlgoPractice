@@ -34,6 +34,7 @@ namespace Algorithms.Tests
 
             Assert.False(_algo.HasCycle(firstNode));
         }
+
         [Fact]
         public void CanDetermineChainHasCycles()
         {
@@ -48,6 +49,16 @@ namespace Algorithms.Tests
 
             Assert.True(_algo.HasCycle(firstNode));
         }
+
+        [Fact]
+        public void CanDeterminFunctionHasCycles()
+        {
+            TortoiseHare<int> algo = new TortoiseHare<int>();
+            FunctionalNode<int> fNode = new FunctionalNode<int>(x => (x + 1) % 10, 0);
+
+            Assert.True(algo.HasCycle(fNode));
+        }
+
 
     }
 }

@@ -5,20 +5,24 @@ namespace Algorithms
 {
     public class TortoiseHare<T>
     {
+        /// <summary>
+        /// Tortoise and Hare version of cycle detection
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public bool HasCycle(INode<T> node)
         {
-            // until I put in the cycle detection, have a kill switch
-            int i = 0;
             var tortoise = node;
             var hare = node;
 
-            while (hare != null && i++ < 100)
+            while (hare != null)
             {
                 hare = hare.Next();
                 if (hare == null) return false;
-                if (tortoise == hare) return true;
+                if (hare.Value.Equals(tortoise.Value)) return true;
                 hare = hare.Next();
-                if (tortoise == hare) return true;
+                if (hare == null) return false;
+                if (hare.Value.Equals(tortoise.Value)) return true;
                 tortoise = tortoise.Next();
             }
             // if i got this far, there were no cycles
