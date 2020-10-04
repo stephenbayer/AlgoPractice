@@ -37,7 +37,12 @@ namespace DataStructures.List
             return true;
         }
 
-        public T Remove(int index)
+        public int Length()
+        {
+            throw new NotImplementedException();
+        }
+
+        public T RemoveAt(int index)
         {
             throw new NotImplementedException();
         }

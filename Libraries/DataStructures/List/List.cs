@@ -12,12 +12,13 @@ namespace DataStructures.List
         T Add(T item);
         //an operation for determining the first component(or the "head") of a list
         T Head();
+        int Length();
         //an operation for referring to the list consisting of all the components of a list except for its first(this is called the "tail" of the list.)
         List<T> Tail();
         //an operation for accessing the element at a given index.
         T Get(int index);
         int IndexOf(T item);
-        T Remove(int index);
+        T RemoveAt(int index);
         T Remove(T item);
     }
 }
