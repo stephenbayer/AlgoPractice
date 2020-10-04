@@ -7,7 +7,7 @@ namespace DataStructures
     /// <typeparam name="T">Type of data contained in node</typeparam>
     public class ParentAwareNode<T> : Node<T>
     {
-        INode<T> _parent = null;
+        Node<T> _parent = null;
 
         public ParentAwareNode(T value) : this(value, null)
         {
@@ -15,12 +15,12 @@ namespace DataStructures
         }
 
 
-        public ParentAwareNode(T value, INode<T> child) : this(value, child, null)
+        public ParentAwareNode(T value, Node<T> child) : this(value, child, null)
         {
 
         }
 
-        public ParentAwareNode(T value, INode<T> child, INode<T> parent) : base(value, child)
+        public ParentAwareNode(T value, Node<T> child, Node<T> parent) : base(value, child)
         {
             INode<T> childsParent = null;
             if (child != null && child is ParentAwareNode<T>)
@@ -50,7 +50,7 @@ namespace DataStructures
 
         public void SetParent(INode<T> parent)
         {
-            _parent = parent;
+            _parent = parent as ParentAwareNode<T>;
         }
     }
 }

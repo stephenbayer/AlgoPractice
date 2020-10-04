@@ -228,7 +228,7 @@ namespace DataStructures
             }
             else
             {
-                node.Previous().SetChild(node.Next());
+                (node.Previous() as IChildableNode<T>).SetChild(node.Next());
             }
 
             if (node.Next() == null)
@@ -273,7 +273,7 @@ namespace DataStructures
         public List<T> Tail()
         {
             if (_length < 2) return new LinkedList<T>();
-            return new LinkedList<T>(_head.Next(), _length - 1);
+            return new LinkedList<T>(_head.Next() as ParentAwareNode<T>, _length - 1);
         }
     }
 }

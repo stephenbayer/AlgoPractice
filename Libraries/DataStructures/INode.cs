@@ -18,10 +18,5 @@ namespace DataStructures
         /// <returns>Next child of node</returns>
         INode<T> Next();
 
-        /// <summary>
-        /// Sets new child for node
-        /// </summary>
-        /// <param name="child">New child node</param>
-        void SetChild(INode<T> child);
     }
 }

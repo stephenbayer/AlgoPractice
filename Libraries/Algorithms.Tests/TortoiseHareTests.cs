@@ -29,8 +29,8 @@ namespace Algorithms.Tests
 
             Node<object> firstNode = new Node<object>(new object());
             firstNode.SetChild(new Node<object>(new object()));
-            firstNode.Next().SetChild(new Node<object>(new object()));
-            firstNode.Next().Next().SetChild(new Node<object>(new object()));
+            (firstNode.Next() as IChildableNode<object>).SetChild(new Node<object>(new object()));
+            (firstNode.Next().Next() as Node<object>).SetChild(new Node<object>(new object()));
 
             Assert.False(_algo.HasCycle(firstNode));
         }
@@ -42,9 +42,9 @@ namespace Algorithms.Tests
             Node<object> secondChild = new Node<object>(new { val = 2 });
 
             firstNode.SetChild(secondChild); 
-            firstNode.Next().SetChild(new Node<object>(new { val = 3 }));
-            firstNode.Next().Next().SetChild(new Node<object>(new { val = 4 }));
-            firstNode.Next().Next().Next().SetChild(secondChild);
+            (firstNode.Next() as Node<object>).SetChild(new Node<object>(new { val = 3 }));
+            (firstNode.Next().Next() as Node<object>).SetChild(new Node<object>(new { val = 4 }));
+            (firstNode.Next().Next().Next() as Node<object>).SetChild(secondChild);
 
             Assert.True(_algo.HasCycle(firstNode));
         }

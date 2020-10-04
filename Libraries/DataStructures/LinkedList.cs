@@ -5,8 +5,8 @@ namespace DataStructures
 {
     public class LinkedList<T> : List<T>
     {
-        INode<T> _head = null;
-        INode<T> _last = null;
+        ParentAwareNode<T> _head = null;
+        ParentAwareNode<T> _last = null;
         int _length = 0;
         object _lock = new object();
 
@@ -20,7 +20,7 @@ namespace DataStructures
         /// <summary>
         /// setting head and length
         /// </summary>
-        public LinkedList(INode<T> head, int length)
+        public LinkedList(ParentAwareNode<T> head, int length)
         {
             _head = head;
             _length = length;
@@ -36,7 +36,7 @@ namespace DataStructures
         {
             lock(_lock)
             {
-                INode<T> newNode = new Node<T>(item);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item);
 
                 if (_head == null)
                 {
@@ -62,7 +62,7 @@ namespace DataStructures
 
             lock (_lock)
             {
-                INode<T> newNode = new Node<T>(item);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item);
 
                 if (_head == null)
                 {
@@ -88,13 +88,13 @@ namespace DataStructures
         {
             if (index > _length - 1) throw new IndexOutOfRangeException();
 
-            INode<T> node = _head;
+            ParentAwareNode<T> node = _head;
 
             int i = 0;
 
             while (i < index)
             {
-                node = node.Next();
+                node = node.Next() as ParentAwareNode<T>;
                 i++;
             }
             return node.Value;
@@ -122,12 +122,12 @@ namespace DataStructures
             if (_length == 0) return -1;
 
             int index = 0;
-            INode<T> currentNode = _head;
+            ParentAwareNode<T> currentNode = _head;
             while (currentNode != null)
             {
                 if (item.Equals(currentNode.Value)) return index;
                 index++;
-                currentNode = currentNode.Next();
+                currentNode = currentNode.Next() as ParentAwareNode<T>;
                 
             }
             return -1;
@@ -165,18 +165,18 @@ namespace DataStructures
             lock(_lock)
             {
                 int i = 0;
-                INode<T> previousNode = null;
-                INode<T> currentNode = _head;
+                ParentAwareNode<T> previousNode = null;
+                ParentAwareNode<T> currentNode = _head;
                 while (i < index)
                 {
                     previousNode = currentNode;
-                    currentNode = currentNode.Next();
+                    currentNode = currentNode.Next() as ParentAwareNode<T>;
                     i++;
                 }
                 item = currentNode.Value;
                 if (previousNode == null)
                 {
-                    _head = currentNode.Next();
+                    _head = currentNode.Next() as ParentAwareNode<T>;
                 } else
                 {
                     previousNode.SetChild(currentNode.Next());
@@ -197,12 +197,12 @@ namespace DataStructures
             lock (_lock)
             {
                 int i = 0;
-                INode<T> previousNode = null;
-                INode<T> currentNode = _head;
+                ParentAwareNode<T> previousNode = null;
+                ParentAwareNode<T> currentNode = _head;
                 while (i < _length && !item.Equals(currentNode.Value))
                 {
                     previousNode = currentNode;
-                    currentNode = currentNode.Next();
+                    currentNode = currentNode.Next() as ParentAwareNode<T>;
                     i++;
                 }
                 if (i == _length) throw new IndexOutOfRangeException();
@@ -210,7 +210,7 @@ namespace DataStructures
                 item = currentNode.Value;
                 if (previousNode == null)
                 {
-                    _head = currentNode.Next();
+                    _head = currentNode.Next() as ParentAwareNode<T>;
                 }
                 else
                 {
@@ -228,7 +228,7 @@ namespace DataStructures
         public List<T> Tail()
         {
             if (_length < 2) return new LinkedList<T>();
-            return new LinkedList<T>(_head.Next(), _length - 1);
+            return new LinkedList<T>(_head.Next() as ParentAwareNode<T>, _length - 1);
         }
     }
 }

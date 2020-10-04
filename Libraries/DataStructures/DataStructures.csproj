@@ -34,6 +34,8 @@
     <Compile Include="DoublyLinkedList.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="List.cs" />
+    <Compile Include="FunctionalNode.cs" />
+    <Compile Include="IChildableNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

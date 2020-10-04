@@ -4,7 +4,7 @@
     /// An impleentation of a Node class
     /// </summary>
     /// <typeparam name="T">Type of the data contained in node class</typeparam>
-    public class Node<T> : INode<T>
+    public class Node<T> : IChildableNode<T>
     {
         T _value;
         private INode<T> _child = null;
