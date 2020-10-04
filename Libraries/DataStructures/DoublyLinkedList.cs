@@ -37,7 +37,7 @@ namespace DataStructures
         {
             lock (_lock)
             {
-                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item, null, null);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item);
 
                 if (_head == null)
                 {
@@ -65,7 +65,7 @@ namespace DataStructures
 
             lock (_lock)
             {
-                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item, null, null);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item);
 
                 if (_head == null)
                 {
