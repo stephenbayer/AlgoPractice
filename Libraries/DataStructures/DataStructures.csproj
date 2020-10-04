@@ -30,12 +30,14 @@
     <Compile Include="List\List.cs" />
     <Compile Include="List\LinkedList.cs" />
     <Compile Include="List\ArrayList.cs" />
+    <Compile Include="Common\Node.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="List\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

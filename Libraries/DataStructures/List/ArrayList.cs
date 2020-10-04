@@ -1,6 +1,10 @@
 ﻿using System;
 namespace DataStructures.List
 {
+    /// <summary>
+    /// Implementation of a List Data Structure using arrays
+    /// </summary>
+    /// <typeparam name="T">Type of elements contained in list</typeparam>
     public class ArrayList<T> : List<T> 
     {
         const int DEFAULT_INITIAL_SIZE = 8;
@@ -9,11 +13,17 @@ namespace DataStructures.List
         int _length;
         object _lock = new object();
 
-        //a constructor for creating an empty list;
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ArrayList() : this(DEFAULT_INITIAL_SIZE)
         {
         }
-        //a constructor for creating an empty list;
+
+        /// <summary>
+        /// Constructor to set an initial size of backing array
+        /// </summary>
+        /// <param name="initialSize">Size to set for backing array</param>
         public ArrayList(int initialSize)
         {
             initialSize =
@@ -26,6 +36,11 @@ namespace DataStructures.List
             _backingArray = new T[_size];
         }
 
+        /// <summary>
+        /// Adds an item to the end of a lit
+        /// </summary>
+        /// <param name="item">Item to add</param>
+        /// <returns>The item that was successfully added</returns>
         public T Add(T item)
         {
             lock(_lock) {
@@ -36,6 +51,10 @@ namespace DataStructures.List
             return item;
         }
 
+        /// <summary>
+        /// Trying to stay Dry, needed to increase the size of the array for
+        /// both Add and AddFirst
+        /// </summary>
         private void PrepareForAdd()
         {
                 if (_length + 1 > _size)
@@ -55,6 +74,11 @@ namespace DataStructures.List
                 }
         }
 
+        /// <summary>
+        /// Prepends an item onto the list
+        /// </summary>
+        /// <param name="item">Item to prepend</param>
+        /// <returns>Item that was successfully prepended.</returns>
         public T AddFirst(T item)
         {
             // This is  Ω(1), for empty array, but O(n) otherwise
@@ -78,16 +102,32 @@ namespace DataStructures.List
             return item;
         }
 
+        /// <summary>
+        /// Get Item at specified index
+        /// </summary>
+        /// <param name="index">the index to return item</param>
+        /// <returns>item at the specified index</returns>
         public T Get(int index)
         {
             return _backingArray[index];
         }
 
+        /// <summary>
+        /// returns the first object in the list
+        /// </summary>
+        /// <returns>The first item in list</returns>
         public T Head()
         {
             return _backingArray[0];
         }
 
+        /// <summary>
+        /// Get index of the item
+        /// </summary>
+        /// <param name="item">Item to return index</param>
+        /// <returns>index of the item, if it is in the list.
+        /// If item is not in the list, returns -1
+        /// </returns>
         public int IndexOf(T item)
         {
             // O(n) is what I can do
@@ -100,11 +140,20 @@ namespace DataStructures.List
             return -1;
         }
 
+        /// <summary>
+        /// reports whether list is empty
+        /// </summary>
+        /// <returns>true if List contains no items, false otherwise</returns>
         public bool IsEmpty()
         {
             return _length == 0;
         }
 
+        /// <summary>
+        /// Removes item at specified index
+        /// </summary>
+        /// <param name="index">index of item to remove</param>
+        /// <returns>item which was removed</returns>
         public T RemoveAt(int index)
         {
             if (index >= _length || index < 0) { throw new IndexOutOfRangeException(); }
@@ -125,12 +174,21 @@ namespace DataStructures.List
             }
         }
 
+        /// <summary>
+        /// Remove item from list
+        /// </summary>
+        /// <param name="item">item to remove</param>
+        /// <returns>Item, if it was successfully removed</returns>
         public T Remove(T item)
         {
             int index = IndexOf(item);
             return RemoveAt(index);
         }
 
+        /// <summary>
+        /// Returns the tail of the list
+        /// </summary>
+        /// <returns>The items after the first item in the list</returns>
         public List<T> Tail()
         {
             if (_length < 2) return new ArrayList<T>();
@@ -157,6 +215,10 @@ namespace DataStructures.List
 
         }
 
+        /// <summary>
+        /// obtain the length of list
+        /// </summary>
+        /// <returns>number of items in the list</returns>
         public int Length()
         {
             return _length;

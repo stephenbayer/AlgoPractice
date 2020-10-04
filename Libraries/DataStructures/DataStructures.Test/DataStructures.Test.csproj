@@ -18,5 +18,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="List\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 </Project>
