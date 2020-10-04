@@ -1,8 +1,6 @@
-﻿using System;
-using DataStructures.Common;
-using Xunit;
+﻿using Xunit;
 
-namespace DataStructures.Test.Common
+namespace DataStructures.Test
 {
     public class NodeTests
     {

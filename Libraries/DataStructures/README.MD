@@ -1,4 +1,4 @@
 Data Structures
 ---
 
-* [Lists](List/README.MD)
+* [Lists](LISTS.MD)

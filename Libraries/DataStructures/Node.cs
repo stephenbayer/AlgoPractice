@@ -1,4 +1,4 @@
-﻿namespace DataStructures.Common
+﻿namespace DataStructures
 {
     /// <summary>
     /// An impleentation of a Node class

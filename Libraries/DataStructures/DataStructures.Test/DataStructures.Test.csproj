@@ -16,8 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\DataStructures.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="List\" />
-    <Folder Include="Common\" />
-  </ItemGroup>
 </Project>

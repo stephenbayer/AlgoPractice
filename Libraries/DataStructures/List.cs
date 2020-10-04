@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DataStructures.List
+namespace DataStructures
 {
     /// <summary>
     /// List interface

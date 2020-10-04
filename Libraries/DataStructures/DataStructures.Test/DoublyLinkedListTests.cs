@@ -1,8 +1,7 @@
-﻿using System;
-using Xunit;
-using DataStructures.List;
+﻿using Xunit;
+using DataStructures;
 
-namespace DataStructures.Test.List
+namespace DataStructures.Test
 {
     public class DoublyLinkedListTests
     {

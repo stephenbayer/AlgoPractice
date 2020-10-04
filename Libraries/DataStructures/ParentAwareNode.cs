@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DataStructures.Common
+namespace DataStructures
 {
     /// <summary>
     /// An implementation of the node that knows about it's parent.

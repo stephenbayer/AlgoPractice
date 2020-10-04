@@ -27,20 +27,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="List\List.cs" />
-    <Compile Include="List\LinkedList.cs" />
-    <Compile Include="List\ArrayList.cs" />
-    <Compile Include="Common\Node.cs" />
-    <Compile Include="Common\ParentAwareNode.cs" />
-    <Compile Include="Common\INode.cs" />
-    <Compile Include="List\DoublyLinkedList.cs" />
+    <Compile Include="INode.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="ParentAwareNode.cs" />
+    <Compile Include="ArrayList.cs" />
+    <Compile Include="DoublyLinkedList.cs" />
+    <Compile Include="LinkedList.cs" />
+    <Compile Include="List.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="List\" />
-    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

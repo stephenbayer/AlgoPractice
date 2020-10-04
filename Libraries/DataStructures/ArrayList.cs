@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DataStructures.List
+namespace DataStructures
 {
     /// <summary>
     /// Implementation of a List Data Structure using arrays

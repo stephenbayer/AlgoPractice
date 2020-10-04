@@ -1,39 +1,53 @@
 ﻿using System;
 using Xunit;
-using DataStructures.List;
+using DataStructures;
 
-namespace DataStructures.Test.List
+namespace DataStructures.Test
 {
-    public class ArrayListTests
+    public class LinkedListTests
     {
         [Fact]
-        public void ArrayListCanBeCreated()
+        public void LinkedListCanBeCreated()
         {
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
 
             Assert.NotNull(cut);
         }
 
         [Fact]
-        public void NewArrayListCreatedEmpty()
+        public void NewLinkedListCreatedEmpty()
         {
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
 
             Assert.True(cut.IsEmpty());
         }
 
+
         [Fact]
-        public void CanGetLengthOfArrayList()
+        public void LinkedListWithItemIsNotEmpty()
         {
-            List<int> cut = new ArrayList<int>();
-            for (int i = 0; i < 10; i++) { cut.Add(i); }
+            List<int> cut = new LinkedList<int>();
+            cut.Add(1);
+            Assert.False(cut.IsEmpty());
+        }
+
+        [Fact]
+        public void CanGetLengthOfLinkedList()
+        {
+            List<int> cut = new LinkedList<int>();
+
+            for(int i = 0; i < 10; i++)
+            {
+                cut.Add(i);
+            }
             Assert.Equal(10, cut.Length());
         }
 
         [Fact]
-        public void CanAddAnItemToArrayList()
+        public void CanAddAnItemToLinkedList()
         {
-            List<int> cut = new ArrayList<int>();
+
+            List<int> cut = new LinkedList<int>();
 
             cut.Add(1);
 
@@ -43,46 +57,41 @@ namespace DataStructures.Test.List
         }
 
         [Fact]
-        public void CanAddMoreITemsThanDefaultArraySizeToArrayList()
+        public void CanAddMoreITemsToLinkedList()
         {
-            List<int> cut = new ArrayList<int>();
-            for (int i = 1; i < 10; i++)
+            List<int> cut = new LinkedList<int>();
+
+            for(int i = 0; i < 4; i++)
             {
                 cut.Add(i);
             }
 
-            int actual = cut.Get(8);
-
-            Assert.Equal(9, actual);
-        }
-
-        [Fact]
-        public void ArrayListWithItemIsNotEmpty()
-        {
-            List<int> cut = new ArrayList<int>();
-
-            cut.Add(1);
-
-            Assert.False(cut.IsEmpty());
+            //[0, 1, 2, 3]
+            Assert.Equal(4, cut.Length());
+            Assert.Equal(0, cut.Get(0));
+            Assert.Equal(1, cut.Get(1));
+            Assert.Equal(2, cut.Get(2));
+            Assert.Equal(3, cut.Get(3));
         }
 
         [Fact]
         public void CanPrependItemToList()
         {
-            List<int> cut = new ArrayList<int>();
 
+            List<int> cut = new LinkedList<int>();
             cut.Add(1);
-
             cut.AddFirst(2);
 
+            // [2, 1]
+            Assert.Equal(2, cut.Length());
             Assert.Equal(2, cut.Get(0));
             Assert.Equal(1, cut.Get(1));
         }
 
         [Fact]
-        public void CanAddFirstMoreITemsThanDefaultArraySizeToArrayList()
+        public void CanAddFirstMoreItemsToLinkedList()
         {
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
             for (int i = 1; i < 10; i++)
             {
                 cut.AddFirst(i);
@@ -99,22 +108,23 @@ namespace DataStructures.Test.List
 
         }
 
-        //an operation for determining the first component(or the "head") of a list
         [Fact]
-        public void CanGetHeadOfArrayList()
+        public void CanGetHeadOfLinkedList()
         {
-            List<int> cut = new ArrayList<int>();
+
+            List<int> cut = new LinkedList<int>();
             for (int i = 1; i < 10; i++)
             {
                 cut.Add(i);
             }
             Assert.Equal(1, cut.Head());
         }
-        //an operation for referring to the list consisting of all the components of a list except for its first(this is called the "tail" of the list.)
+
         [Fact]
-        public void TailShouldBeOneLessItemsThanArray()
+        public void TailShouldBeOneLessItemsThanList()
         {
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
+
             for (int i = 1; i < 4; i++)
             {
                 cut.Add(i);
@@ -124,27 +134,25 @@ namespace DataStructures.Test.List
             Assert.Equal(2, tail.Length());
             Assert.Equal(2, tail.Get(0));
             Assert.Equal(3, tail.Get(1));
-
         }
-        //an operation for accessing the element at a given index.
+       
         [Fact]
-        public void ShouldBeAbleToAccessItemAtASpecificIndexInArrayList()
+        public void ShouldBeAbleToAccessItemAtASpecificIndex()
         {
-
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
             for (int i = 1; i < 4; i++)
             {
                 cut.Add(i);
             }
             Assert.Equal(2, cut.Get(1));
+
         }
 
-        // an operation for accessing the index of a given value.
         [Fact]
-        public void ShouldFindIndexOfItemInArrayList()
+        public void ShouldFindIndexOfItem()
         {
+            List<int> cut = new LinkedList<int>();
 
-            List<int> cut = new ArrayList<int>(32);
             for (int i = 1; i < 20; i++)
             {
                 cut.Add(i);
@@ -154,12 +162,10 @@ namespace DataStructures.Test.List
 
         }
 
-        // an operation to remove an item at a given index
         [Fact]
-        public void CanRemoveItemAtIndexFromArrayList()
+        public void CanRemoveItemAtIndexFromLinkedList()
         {
-
-            List<int> cut = new ArrayList<int>();
+            List<int> cut = new LinkedList<int>();
             for (int i = 1; i < 4; i++)
             {
                 cut.Add(i);
@@ -170,13 +176,13 @@ namespace DataStructures.Test.List
             Assert.Equal(2, cut.Length());
             Assert.Equal(1, cut.Get(0));
             Assert.Equal(3, cut.Get(1));
-        }
 
+        }
         [Fact]
         public void IndexOfShouldReturnNegativeOneForNonExistingItem()
         {
+            List<int> cut = new LinkedList<int>();
 
-            List<int> cut = new ArrayList<int>();
             for (int i = 1; i < 4; i++)
             {
                 cut.Add(i);
@@ -186,10 +192,9 @@ namespace DataStructures.Test.List
 
         // an operation to remove a given item
         [Fact]
-        public void CanRemoveItemFromArrayList()
+        public void CanRemoveItemFromLinkedList()
         {
-
-            List<dynamic> cut = new ArrayList<dynamic>();
+            List<dynamic> cut = new LinkedList<dynamic>();
             dynamic objectToRemove = new { val = 42 };
             for (int i = 1; i < 4; i++)
             {

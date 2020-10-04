@@ -1,5 +1,5 @@
 ﻿using System;
-namespace DataStructures.Common
+namespace DataStructures
 {
     /// <summary>
     /// Inteface for a node

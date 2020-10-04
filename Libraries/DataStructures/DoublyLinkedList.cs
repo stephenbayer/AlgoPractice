@@ -1,7 +1,7 @@
 ﻿using System;
-using DataStructures.Common;
+using DataStructures;
 
-namespace DataStructures.List
+namespace DataStructures
 {
     public class DoublyLinkedList<T> : List<T>
     {
