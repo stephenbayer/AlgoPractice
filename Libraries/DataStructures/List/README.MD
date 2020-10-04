@@ -16,3 +16,5 @@ Types of Lists
 1.  ArrayList
 A list using arrays as backing stores
 
+2.  Linked List
+A list using objects starting at a "head" and pointing to each child

@@ -37,7 +37,7 @@ namespace DataStructures.List
         }
 
         /// <summary>
-        /// Adds an item to the end of a lit
+        /// Adds an item to the end of a list
         /// </summary>
         /// <param name="item">Item to add</param>
         /// <returns>The item that was successfully added</returns>

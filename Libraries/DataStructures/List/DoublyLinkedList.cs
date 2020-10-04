@@ -3,26 +3,27 @@ using DataStructures.Common;
 
 namespace DataStructures.List
 {
-    public class LinkedList<T> : List<T>
+    public class DoublyLinkedList<T> : List<T>
     {
-        INode<T> _head = null;
-        INode<T> _last = null;
+        ParentAwareNode<T> _head = null;
+        ParentAwareNode<T> _last = null;
         int _length = 0;
         object _lock = new object();
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public LinkedList()
+        public DoublyLinkedList()
         {
         }
 
         /// <summary>
         /// setting head and length
         /// </summary>
-        public LinkedList(INode<T> head, int length)
+        public DoublyLinkedList(ParentAwareNode<T> head, ParentAwareNode<T> last, int length)
         {
             _head = head;
+            _last = last;
             _length = length;
         }
 
@@ -34,16 +35,18 @@ namespace DataStructures.List
         /// <returns>The item that was successfully added</returns>
         public T Add(T item)
         {
-            lock(_lock)
+            lock (_lock)
             {
-                INode<T> newNode = new Node<T>(item);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item, null, null);
 
                 if (_head == null)
                 {
                     _head = _last = newNode;
-                } else
+                }
+                else
                 {
                     _last.SetChild(newNode);
+                    newNode.SetParent(_last);
                     _last = newNode;
                 }
                 _length++;
@@ -62,7 +65,7 @@ namespace DataStructures.List
 
             lock (_lock)
             {
-                INode<T> newNode = new Node<T>(item);
+                ParentAwareNode<T> newNode = new ParentAwareNode<T>(item, null, null);
 
                 if (_head == null)
                 {
@@ -71,12 +74,18 @@ namespace DataStructures.List
                 else
                 {
                     newNode.SetChild(_head);
+                    _head.SetParent(newNode);
                     _head = newNode;
                 }
                 _length++;
             }
 
             return item;
+        }
+
+        public int GetMidPointIndex()
+        {
+            return _length / 2;
         }
 
         /// <summary>
@@ -88,15 +97,31 @@ namespace DataStructures.List
         {
             if (index > _length - 1) throw new IndexOutOfRangeException();
 
-            INode<T> node = _head;
+            ParentAwareNode<T> node = _head;
 
             int i = 0;
+            int midpoint = GetMidPointIndex();
 
-            while (i < index)
+            if (index > midpoint)
             {
-                node = node.Next();
-                i++;
+                node = _last;
+                // find starting at end
+                i = _length - 1;
+                while (i > index)
+                {
+                    node = node.Previous() as ParentAwareNode<T>;
+                    i--;
+                }
+            } else
+            {
+                while (i < index)
+                {
+                    node = node.Next() as ParentAwareNode<T>;
+                    i++;
+                }
+
             }
+
             return node.Value;
         }
 
@@ -128,7 +153,7 @@ namespace DataStructures.List
                 if (item.Equals(currentNode.Value)) return index;
                 index++;
                 currentNode = currentNode.Next();
-                
+
             }
             return -1;
         }
@@ -162,29 +187,59 @@ namespace DataStructures.List
 
             T item;
 
-            lock(_lock)
+            lock (_lock)
             {
                 int i = 0;
-                INode<T> previousNode = null;
-                INode<T> currentNode = _head;
-                while (i < index)
+                ParentAwareNode<T> currentNode;
+                int midpoint = GetMidPointIndex();
+                if (index > midpoint)
                 {
-                    previousNode = currentNode;
-                    currentNode = currentNode.Next();
-                    i++;
+                    currentNode = _last;
+                    i = _length - 1;
+                    while (i > index)
+                    {
+                        currentNode = currentNode.Previous() as ParentAwareNode<T>;
+                        i--;
+                    }
+                }
+                else
+                {
+                    currentNode = _head;
+                    while (i < index)
+                    {
+                        currentNode = currentNode.Next() as ParentAwareNode<T>;
+                        i++;
+                    }
                 }
                 item = currentNode.Value;
-                if (previousNode == null)
-                {
-                    _head = currentNode.Next();
-                } else
-                {
-                    previousNode.SetChild(currentNode.Next());
-                }
-                _length--;
+
+                DeleteNode(currentNode);
             }
             return item;
 
+        }
+
+        private void DeleteNode(ParentAwareNode<T> node)
+        {
+
+            if (node.Previous() == null)
+            {
+                _head = node;
+            }
+            else
+            {
+                node.Previous().SetChild(node.Next());
+            }
+
+            if (node.Next() == null)
+            {
+                _last = node;
+            }
+            else
+            {
+                (node.Next() as ParentAwareNode<T>).SetParent(node.Previous());
+            }
+            _length--;
         }
 
         /// <summary>
@@ -196,27 +251,17 @@ namespace DataStructures.List
         {
             lock (_lock)
             {
-                int i = 0;
-                INode<T> previousNode = null;
-                INode<T> currentNode = _head;
-                while (i < _length && !item.Equals(currentNode.Value))
+                ParentAwareNode<T> currentNode = _head;
+
+                while (currentNode != null && (!item.Equals(currentNode.Value)))
                 {
-                    previousNode = currentNode;
-                    currentNode = currentNode.Next();
-                    i++;
+                    currentNode = currentNode.Next() as ParentAwareNode<T>;
                 }
-                if (i == _length) throw new IndexOutOfRangeException();
+
+                if (currentNode == null) throw new IndexOutOfRangeException();
 
                 item = currentNode.Value;
-                if (previousNode == null)
-                {
-                    _head = currentNode.Next();
-                }
-                else
-                {
-                    previousNode.SetChild(currentNode.Next());
-                }
-                _length--;
+                DeleteNode(currentNode);
             }
             return item;
         }

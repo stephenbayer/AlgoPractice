@@ -31,6 +31,9 @@
     <Compile Include="List\LinkedList.cs" />
     <Compile Include="List\ArrayList.cs" />
     <Compile Include="Common\Node.cs" />
+    <Compile Include="Common\ParentAwareNode.cs" />
+    <Compile Include="Common\INode.cs" />
+    <Compile Include="List\DoublyLinkedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
