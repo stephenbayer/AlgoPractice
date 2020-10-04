@@ -17,4 +17,10 @@ Types of Lists
 A list using arrays as backing stores
 
 2.  Linked List
-A list using objects starting at a "head" and pointing to each child
+A list using objects starting at a "head" and pointing to each child.  It's not particularly
+efficient to read from as it needs to traverse the list, but more efficient adding and removing
+items as it doesn't need to reconfigure or resize an array. 
+
+3.  Doubly Linked List
+A linked list whose nodes track their parent.  It's not much different than the linked list
+but can more efficiently handle getting nodes by index from the end of a list. 
