@@ -5,11 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmicCocoa", "Algorit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "..\Libraries\DataStructures\DataStructures.csproj", "{18C98E26-8A9A-49E3-9DE4-753725871B20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Test", "..\Libraries\DataStructures\DataStructures.Test\DataStructures.Test.csproj", "{C4185EFF-6E48-4EC2-A7BD-F825BF1CB1DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "..\Libraries\Algorithms\Algorithms.csproj", "{EC1B056D-5B9C-4CB2-AEA3-DF8E0DE5F852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tests", "..\Libraries\Algorithms.Tests\Algorithms.Tests.csproj", "{E4CF9667-E5EB-4107-A4B5-51AB236149B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Test", "..\Libraries\DataStructures.Test\DataStructures.Test.csproj", "{AC061CC3-ECF8-4B0A-B1FE-BD3E0C476734}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{18C98E26-8A9A-49E3-9DE4-753725871B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C98E26-8A9A-49E3-9DE4-753725871B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C98E26-8A9A-49E3-9DE4-753725871B20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4185EFF-6E48-4EC2-A7BD-F825BF1CB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4185EFF-6E48-4EC2-A7BD-F825BF1CB1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4185EFF-6E48-4EC2-A7BD-F825BF1CB1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4185EFF-6E48-4EC2-A7BD-F825BF1CB1DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC1B056D-5B9C-4CB2-AEA3-DF8E0DE5F852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC1B056D-5B9C-4CB2-AEA3-DF8E0DE5F852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC1B056D-5B9C-4CB2-AEA3-DF8E0DE5F852}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,5 +33,9 @@ Global
 		{E4CF9667-E5EB-4107-A4B5-51AB236149B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4CF9667-E5EB-4107-A4B5-51AB236149B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4CF9667-E5EB-4107-A4B5-51AB236149B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC061CC3-ECF8-4B0A-B1FE-BD3E0C476734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC061CC3-ECF8-4B0A-B1FE-BD3E0C476734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC061CC3-ECF8-4B0A-B1FE-BD3E0C476734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC061CC3-ECF8-4B0A-B1FE-BD3E0C476734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
