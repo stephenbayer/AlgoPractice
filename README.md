@@ -9,6 +9,6 @@ Also, I'd like to create a desktop impelementation that uses these classes and i
 
 And so it begins:
 
-- [Data Structures](Libraries/DataStructures/README.MD)
+- [Data Structures](Libraries/DataStructures)
 
-- [Algorithms](Libraries/Algorithms/README.MD)
+- [Algorithms](Libraries/Algorithms/)
