@@ -219,6 +219,38 @@ namespace DataStructures.Test
             Assert.Equal(-1, cut.IndexOf(42));
         }
 
+        [Fact]
+        public void CanAddNullValueToDoublyLinkedList()
+        {
+            List<object> cut = new DoublyLinkedList<object>();
+
+            cut.Add(new { val = 1 });
+            cut.Add(null);
+            cut.Add(new { val = 2 });
+            Assert.Equal(1, cut.IndexOf(null));
+        }
+
+        [Fact]
+        public void CanReturnNotFoundOfNull()
+        {
+            List<object> cut = new DoublyLinkedList<object>();
+
+            cut.Add(new { val = 1 });
+            cut.Add(new { val = 2 });
+            Assert.Equal(-1, cut.IndexOf(null));
+        }
+
+        [Fact]
+        public void CanGetIndexOfValueWithDoublyLinkedListsContainingNulls()
+        {
+            List<object> cut = new DoublyLinkedList<object>();
+            var valueToFind = new { val = 1 };
+            cut.Add(null);
+            cut.Add(valueToFind);
+            cut.Add(null);
+            Assert.Equal(1, cut.IndexOf(valueToFind));
+        }
+
         // an operation to remove a given item
         [Fact]
         public void CanRemoveItemFromDoublyLinkedList()

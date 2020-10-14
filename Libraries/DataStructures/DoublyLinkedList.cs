@@ -150,7 +150,14 @@ namespace DataStructures
             INode<T> currentNode = _head;
             while (currentNode != null)
             {
-                if (item.Equals(currentNode.Value)) return index;
+                if (item == null)
+                {
+                    if (currentNode.Value == null) return index;
+
+                } else
+                {
+                    if (item.Equals(currentNode.Value)) return index;
+                }
                 index++;
                 currentNode = currentNode.Next();
 
@@ -248,12 +255,16 @@ namespace DataStructures
         /// <param name="item">item to remove</param>
         /// <returns>Item, if it was successfully removed</returns>
         public T Remove(T item)
-        {
+        {       
             lock (_lock)
             {
                 ParentAwareNode<T> currentNode = _head;
 
-                while (currentNode != null && (!item.Equals(currentNode.Value)))
+                while (
+                    currentNode != null &&  // if currentNode is null, we are at the end
+                    ((item == null && currentNode.Value != null) || //if item is null and current value is null we found it
+                    (item != null && !item.Equals(currentNode.Value))) // if item is not null and item equals current value we found it
+                )
                 {
                     currentNode = currentNode.Next() as ParentAwareNode<T>;
                 }

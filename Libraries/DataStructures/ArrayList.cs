@@ -134,7 +134,14 @@ namespace DataStructures
             int i = 0;
             while (i < _length)
             {
-                if (item.Equals(_backingArray[i])) return i;
+                if (item == null)
+                {
+                    if (_backingArray[i] == null) return i;
+                } else
+                {
+
+                    if (item.Equals(_backingArray[i])) return i;
+                }
                 i++;
             }
             return -1;

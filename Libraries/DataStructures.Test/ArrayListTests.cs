@@ -213,5 +213,18 @@ namespace DataStructures.Test
             Assert.Equal(-1, cut.IndexOf(objectToRemove));
         }
 
+        [Fact]
+        public void CanAddNullToArrayList()
+        {
+
+            List<object> cut = new ArrayList<object>();
+
+            cut.Add(new { val = 1 });
+            cut.Add(null);
+            cut.Add(new { val = 2 });
+
+            Assert.Equal(1, cut.IndexOf(null));
+
+        }
     }
 }
